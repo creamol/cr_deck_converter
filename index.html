@@ -98,6 +98,13 @@ textarea:focus {
     overflow: hidden;
     margin: 12px auto 0;
     width: fit-content;
+    max-width: 100%;
+}
+.qrcode-block .qr-canvas img,
+.qrcode-block .qr-canvas canvas {
+    max-width: 100%;
+    height: auto !important;
+    display: block;
 }
 .result-link {
     font-size: 13px;
@@ -124,9 +131,9 @@ textarea:focus {
 <div class="box">
     <h1>国际卡组链接服转国服</h1>
 
-    <div style="position:relative;">
-        <textarea id="inputUrl" placeholder="示例： https://link.clashroyale.com/en/?clashroyale://copyDeck?deck=26000014;26000010;26000006;26000032;26000038;28000015;28000017;27000004&l=Royals&tt=159000000"></textarea>
-        <button onclick="pasteFromClipboard()" style="position:absolute;top:8px;right:8px;padding:5px 10px;background:#bbb;color:white;border:none;border-radius:6px;font-size:13px;cursor:pointer;">粘贴</button>
+    <div style="display:flex;gap:8px;align-items:flex-start;">
+        <textarea id="inputUrl" placeholder="示例： https://link.clashroyale.com/en/?clashroyale://copyDeck?deck=26000014;26000010;26000006;26000032;26000038;28000015;28000017;27000004&l=Royals&tt=159000000" style="resize:none;"></textarea>
+        <button onclick="pasteFromClipboard()" style="flex-shrink:0;width:100px;height:100px;background:#bbb;color:white;border:none;border-radius:8px;font-size:15px;cursor:pointer;">粘贴</button>
     </div>
 
     <div class="select-row">
