@@ -136,6 +136,7 @@ textarea:focus {
         <button onclick="pasteFromClipboard()" style="flex-shrink:0;width:100px;height:100px;background:#bbb;color:white;border:none;border-radius:8px;font-size:15px;cursor:pointer;">粘贴</button>
     </div>
 
+
     <div class="select-row">
         <label>ID：</label>
         <input id="idInput" value="000000000">
@@ -162,6 +163,8 @@ document.getElementById("idInput").addEventListener("input", function() {
     localStorage.setItem("cr_id", this.value.trim());
 });
 
+
+
 async function pasteFromClipboard() {
     try {
         const text = await navigator.clipboard.readText();
@@ -179,12 +182,11 @@ function buildUrl() {
     if (!deckMatch) { alert("链接格式错误"); return null; }
 
     const deck = deckMatch[1];
-    const lMatch = input.match(/[\?&]l=([^&]+)/i);
-    const lValue = lMatch ? lMatch[1] : "Royals";
-    const idValue = document.getElementById("idInput").value.trim() || "G9YV9GR8R";
+    const idValue = document.getElementById("idInput").value.trim();
+    const idPart = idValue ? `&id=${idValue}` : "";
 
     const cnDeepLink = `https://link.clashroyale.com/cn?clashroyale://copyDeck?deck=${deck}`
-        + `&slots=0;0;0;0;0;0;0;0&tt=169000000&l=${lValue}&id=${idValue}`;
+        + `&slots=0;0;0;0;0;0;0;0&tt=169000000${idPart}`;
 
     return `http://gamecenter.qq.com/gcjump?appid=1105383847&pf=invite&from=androidqq`
         + `&plat=qq&originuin=111&ADTAG=gameobj.msg_invite`
